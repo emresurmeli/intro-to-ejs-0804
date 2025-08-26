@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <%- include('./partials/nav') %>
+  <h1>We are rendering an EJS page!</h1>
+
+  <!-- Scriplet tags -->
+  <!-- For JS statements -->
+  <% if (true) { %>
+  <p>Things are true</p>
+  <% } else { %>
+  <p>Things are false</p>
+  <% } %>
+
+  <!-- Output tags -->
+  <!-- For JS expressions -->
+  <%= 2 + 2 %>
+
+  <% let showMessage = false; %>
+
+  <% if (showMessage) { %>
+  <p>This is a dynamic message!</p>
+  <% } %>
+
+  <% let favoriteNumber = 7; %>
+
+  <p>My favorite number is <%= favoriteNumber %>.</p>
+
+  <!-- Get values from the locals object -->
+  <p><%= msg %></p>
+  <p><%= player.name %></p>
+
+  <!-- Looping arrays -->
+  <ul>
+    <% inventory.forEach((item, index) => { %>
+    <a href="/<%= index %>">
+      <li><%= item.name %></li>
+    </a>
+    <% }) %>
+  </ul>
+</body>
+
+</html>
