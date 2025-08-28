@@ -9,6 +9,8 @@ const inventory = [
   { name: "Torch", qty: 5 },
 ];
 
+app.use(express.static(__dirname + "/public"));
+
 app.get("/", (req, res) => {
   res.render("home.ejs", {
     msg: "Welcome to the home page!",
@@ -17,6 +19,13 @@ app.get("/", (req, res) => {
     },
     inventory: inventory,
   });
+});
+
+app.get("/review/:param", (req, res) => {
+  const urlParam = req.params.param;
+  const queryParam = req.query.date;
+
+  res.send(`Review time, ${urlParam}. Date is: ${queryParam}`);
 });
 
 app.get("/:inventoryIndex", (req, res) => {
